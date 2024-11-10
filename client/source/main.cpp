@@ -12,7 +12,7 @@ int main(unsigned int count, char *args[]) {
     if(arg_map["-process"].empty() || arg_map["-module"].empty()) return printf("use: -process 1337 -module samp.exe\n");
     if(!driver.init_process(std::atoi(arg_map["-process"].c_str()))) return printf("no connection with driver\n");
 
-    auto module_info = driver.get_module_info(arg_map["-module"], true);
+    auto module_info = driver.get_module_info(arg_map["-module"], !arg_map["-x64"].empty());
     if(module_info.first == -1 && module_info.second == -1) return printf("timeout or other problem with receive module_info from driver\n");
     
     auto dos = driver.read_memory<IMAGE_DOS_HEADER*>(module_info.first, sizeof(IMAGE_DOS_HEADER));

@@ -26,7 +26,7 @@ namespace ed {
         RtlInitAnsiString(&module_ansi, module);
         if(!NT_SUCCESS(RtlAnsiStringToUnicodeString(&module_unicode, &module_ansi, TRUE))) return STATUS_INVALID_PARAMETER_2;
 
-        if(wow64) {
+        if(!wow64) {
             PPEB32 peb32 = (PPEB32)PsGetProcessWow64Process(process);
             for (PLIST_ENTRY32 list = (PLIST_ENTRY32)((PPEB_LDR_DATA32)peb32->Ldr)->InLoadOrderModuleList.Flink; list != &((PPEB_LDR_DATA32)peb32->Ldr)->InLoadOrderModuleList; list = (PLIST_ENTRY32)list->Flink) {
                 PLDR_DATA_TABLE_ENTRY32 entry = CONTAINING_RECORD(list, LDR_DATA_TABLE_ENTRY32, InLoadOrderLinks);
