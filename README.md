@@ -13,3 +13,5 @@
 ###### inspired by:
 > https://github.com/EquiFox/KsDumper <br>
 > https://github.com/justvmexit/dumpr <br>
+
+###### it is recommended to use with kdmapper (https://github.com/TheCruZ/kdmapper)
