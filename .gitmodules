@@ -1,3 +1,9 @@
 [submodule "driver/libraries/FindWDK"]
 	path = driver/libraries/FindWDK
 	url = https://github.com/SergiusTheBest/FindWDK.git
+[submodule "driver/librarires/ksocket"]
+	path = driver/librarires/ksocket
+	url = https://github.com/wbenny/KSOCKET.git
+[submodule "driver/libraries/ksocket"]
+	path = driver/libraries/ksocket
+	url = https://github.com/wbenny/KSOCKET.git
