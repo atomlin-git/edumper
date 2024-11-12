@@ -1,4 +1,4 @@
-###### simple bundle kernel + usermode to easy dumping processes (or modules)
+###### simple bundle kernel + usermode to easy dumping process modules
 
 ###### todo:
 > refactory driver code <br>
@@ -13,5 +13,7 @@
 ###### inspired by:
 > https://github.com/EquiFox/KsDumper <br>
 > https://github.com/justvmexit/dumpr <br>
+<br>
 
 ###### it is recommended to use with kdmapper (https://github.com/TheCruZ/kdmapper)
+###### it is not recommended to use with an active anti-cheats (EAC, BE, etc...)
