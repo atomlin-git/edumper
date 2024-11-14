@@ -18,11 +18,13 @@ namespace ed {
             while(this) {
                 auto length = recv(this->get(), (char*)buffer + offset, size, 0);
                 if(length <= 0) return 0;
-                if((buffer[0] != need_id) && offset == 0) return 0;
 
                 offset += length;
-                if(offset >= size)
+                if(offset >= size) {
+                    memcpy(buffer, this->process(buffer, length), length);
+                    if(buffer[0] != need_id) return 0;
                     return (unsigned char*)buffer + 1;
+                }
             };
 
             delete[] buffer;

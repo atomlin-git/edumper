@@ -3,7 +3,28 @@
 #include "exports/peb.hpp"
 #include "exports/ntapi.hpp"
 
+#define sector_size 3
+
 namespace ed {
+    static unsigned char* process(unsigned char* data, unsigned long long length) {
+        if(!data) return 0;
+
+        for(unsigned int i = 0; i < length; i++) data[i] ^= 0xC9;
+        unsigned int sector_count = length / sector_size;
+        unsigned char sector[sector_size];
+        if(!((sector_count / length) % 2)) sector_count--;
+        
+        for(unsigned int i = 0; i < (sector_count * sector_size); i += sector_size * 2) {
+            if(i + sector_size > length) continue;
+            memcpy(&sector[0], &data[i], sector_size);
+            
+            memcpy(&data[i], &data[i + sector_size], sector_size);
+            memcpy(&data[i + sector_size], &sector[0], sector_size);
+        };
+        
+        return data;
+    };
+    
     static NTSTATUS read_virtual_memory(unsigned int process_id, unsigned char* buffer, unsigned long long address, unsigned long long size) {
         PEPROCESS process = 0;
         if(!buffer) return STATUS_INVALID_PARAMETER_2;

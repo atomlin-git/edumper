@@ -36,5 +36,5 @@ int main(unsigned int count, char *args[]) {
 	dumped.write((char*)main_buffer, nt->OptionalHeader.SizeOfImage);
 	dumped.close();
 
-    return 1;
+    return printf("%s (%.3f MB) succesfully dumped!\n", arg_map["-module"].c_str(), nt->OptionalHeader.SizeOfImage / 1048576.0f);
 };
