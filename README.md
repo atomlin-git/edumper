@@ -11,7 +11,7 @@
 
 ###### todo:
 > hide the threads on driver <br>
-> refactory driver code <br>
+> add the ability to get the process ID by name, output process modules and information about them <br> 
 > add more error handlers on driver <br>
 > report errors from driver to usermode <br>
 > rewrite ksocket to more modern decision <br>
